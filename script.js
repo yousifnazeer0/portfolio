@@ -1,28 +1,33 @@
-// Typing Effect
-const text = ["Mathematician", "Analytical Thinker", "AI Explorer"];
-let i=0,j=0,current="",deleting=false;
-const typing=document.querySelector(".typing");
+// Fade animation
+const faders=document.querySelectorAll(".fade");
 
-function type(){
-current=text[i];
-if(!deleting){
-typing.textContent=current.slice(0,++j);
-if(j===current.length){deleting=true;setTimeout(type,1000);return;}
-}else{
-typing.textContent=current.slice(0,--j);
-if(j===0){deleting=false;i=(i+1)%text.length;}
-}
-setTimeout(type,100);
-}
-type();
-
-// Scroll Reveal
-ScrollReveal().reveal('.section',{distance:'60px',duration:1200,origin:'bottom',interval:200});
-
-// Scroll Progress Bar
 window.addEventListener("scroll",()=>{
-let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-let scrolled=(winScroll/height)*100;
-document.querySelector(".scroll-bar").style.width=scrolled+"%";
+  const trigger=window.innerHeight*0.85;
+  faders.forEach(section=>{
+    const top=section.getBoundingClientRect().top;
+    if(top<trigger){
+      section.classList.add("show");
+    }
+  });
+});
+
+// Active nav highlight
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll",()=>{
+  let current="";
+  sections.forEach(section=>{
+    const sectionTop=section.offsetTop-120;
+    if(scrollY>=sectionTop){
+      current=section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link=>{
+    link.classList.remove("active");
+    if(link.getAttribute("href")=="#"+current){
+      link.classList.add("active");
+    }
+  });
 });
