@@ -1,43 +1,28 @@
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-
-hamburger.addEventListener("click", ()=>{
-  navLinks.classList.toggle("active");
-});
-
-const text = ["Mathematician", "AI Learner", "Web Developer"];
-let i = 0;
-let j = 0;
-let currentText = "";
-let isDeleting = false;
-const typing = document.querySelector(".typing");
+// Typing Effect
+const text = ["Mathematician", "Analytical Thinker", "AI Explorer"];
+let i=0,j=0,current="",deleting=false;
+const typing=document.querySelector(".typing");
 
 function type(){
-  currentText = text[i];
-
-  if(!isDeleting){
-    typing.textContent = currentText.slice(0, ++j);
-    if(j === currentText.length){
-      isDeleting = true;
-      setTimeout(type,1000);
-      return;
-    }
-  } else {
-    typing.textContent = currentText.slice(0, --j);
-    if(j === 0){
-      isDeleting = false;
-      i = (i + 1) % text.length;
-    }
-  }
-
-  setTimeout(type,100);
+current=text[i];
+if(!deleting){
+typing.textContent=current.slice(0,++j);
+if(j===current.length){deleting=true;setTimeout(type,1000);return;}
+}else{
+typing.textContent=current.slice(0,--j);
+if(j===0){deleting=false;i=(i+1)%text.length;}
 }
-
+setTimeout(type,100);
+}
 type();
 
-ScrollReveal().reveal('.section',{
-  distance:'50px',
-  duration:1000,
-  origin:'bottom',
-  interval:200
+// Scroll Reveal
+ScrollReveal().reveal('.section',{distance:'60px',duration:1200,origin:'bottom',interval:200});
+
+// Scroll Progress Bar
+window.addEventListener("scroll",()=>{
+let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let scrolled=(winScroll/height)*100;
+document.querySelector(".scroll-bar").style.width=scrolled+"%";
 });
