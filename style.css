@@ -108,8 +108,7 @@ nav{
 
 /* SECTIONS */
 .section{
-  padding:80px 8%;   /* reduced space */
-  text-align:center;
+  padding:55px 8%;   /* space reduced */
 }
 
 .section h2{
@@ -190,3 +189,4 @@ footer{
     gap:30px;
   }
 }
+
