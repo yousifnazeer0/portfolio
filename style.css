@@ -67,7 +67,7 @@ nav{
 
 /* HERO */
 .hero{
-  min-height:90vh;
+  min-height:75vh;
   display:flex;
   align-items:center;
   padding:120px 8% 60px;
@@ -189,4 +189,5 @@ footer{
     gap:30px;
   }
 }
+
 
