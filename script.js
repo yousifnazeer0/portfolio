@@ -1,4 +1,3 @@
-// Fade animation
 const faders=document.querySelectorAll(".fade");
 
 window.addEventListener("scroll",()=>{
@@ -11,7 +10,6 @@ window.addEventListener("scroll",()=>{
   });
 });
 
-// Active nav highlight
 const sections=document.querySelectorAll("section");
 const navLinks=document.querySelectorAll(".nav-links a");
 
